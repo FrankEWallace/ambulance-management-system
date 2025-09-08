@@ -8,7 +8,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { UserRole } from '../types';
 
 const Login: React.FC = () => {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -20,7 +20,7 @@ const Login: React.FC = () => {
     setError('');
 
     try {
-      const success = await login(email, password);
+      const success = await login(username, password);
       if (!success) {
         setError('Invalid credentials');
       }
@@ -33,14 +33,14 @@ const Login: React.FC = () => {
 
   const quickLogin = (role: UserRole) => {
     const credentials = {
-      admin: 'admin@ams.com',
-      dispatcher: 'dispatcher@ams.com',
-      driver: 'driver@ams.com',
-      paramedic: 'paramedic@ams.com'
+      admin: 'admin',
+      dispatcher: 'dispatcher',
+      driver: 'driver',
+      paramedic: 'paramedic'
     };
     
-    setEmail(credentials[role]);
-    setPassword('password');
+    setUsername(credentials[role]);
+    setPassword(`${role}123`);
   };
 
   return (
@@ -54,13 +54,13 @@ const Login: React.FC = () => {
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="username">Username</Label>
                 <Input
-                  id="email"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
+                  id="username"
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  placeholder="Enter your username"
                   required
                 />
               </div>

@@ -14,6 +14,7 @@ import MedicalInspectionForm from './components/MedicalInspectionForm';
 import VehicleInspectionDashboard from './components/VehicleInspectionDashboard';
 import MedicalInspectionDashboard from './components/MedicalInspectionDashboard';
 import DriverAssignments from './components/DriverAssignments';
+import ApiTestPage from './components/ApiTestPage';
 
 const AppContent: React.FC = () => {
   const { currentUser } = useAuth();
@@ -50,6 +51,8 @@ const AppContent: React.FC = () => {
     switch (activeTab) {
       case 'dashboard':
         return <Dashboard />;
+      case 'api-test':
+        return <ApiTestPage />;
       case 'users':
         return <UserManagement />;
       case 'fleet':
