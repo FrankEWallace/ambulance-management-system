@@ -26,6 +26,6 @@ urlpatterns = [
     path('api/', include('accounts.urls')),
     path('api/', include('ambulances.urls')),
     path('api/', include('patients.urls')),
-    # path('api/', include('dispatch.urls')),
-    # path('api/', include('reports.urls')),
+    path('api/', include('dispatch.urls')),
+    path('api/', include('reports.urls')),
 ]
